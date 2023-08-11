@@ -1,0 +1,5 @@
+FROM confluentinc/cp-kafka-connect:7.4.1
+COPY ./connector_plugins/ /tmp/
+RUN confluent-hub install --no-prompt /tmp/debezium-debezium-connector-postgresql-2.2.1.zip && \
+    confluent-hub install --no-prompt /tmp/confluentinc-kafka-connect-jdbc-10.7.3.zip && \
+    cp /tmp/mysql-connector-j-8.1.0.jar /usr/share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib
